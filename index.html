@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Garrett Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+:root {
+  --blue:        #0070b9;
+  --blue-dark:   #004e82;
+  --blue-mid:    rgba(0,112,185,0.55);
+  --blue-soft:   rgba(0,112,185,0.12);
+  --blue-ghost:  rgba(0,112,185,0.06);
+  --ink:         #333e4e;
+  --ink-light:   #666;
+  --rule:        #e5e8ec;
+  --white:       #ffffff;
+  --radius:      10px;
+  --transition:  0.22s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap { width: 100%; padding: 0; }
+
+/* ─── SECTION ──────────────────────────────────────────────────────── */
+.section { padding: 20px 0 92px; }
+.section + .section { border-top: 1.5px solid var(--rule); }
+
+/* ─── SECTION HEADER ───────────────────────────────────────────────── */
+.section-head { margin-bottom: 10px; }
+.section-head.centered { text-align: center; }
+
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 700;
+  color: var(--blue-dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.section-head.centered h2 { justify-content: center; }
+
+.head-icon {
+  width: clamp(34px, 4vw, 56px);
+  height: clamp(34px, 4vw, 56px);
+  opacity: 0.20;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transform: rotate(-6deg);
+}
+.head-icon path, .head-icon rect, .head-icon circle, .head-icon line, .head-icon polygon {
+  stroke: var(--blue);
+}
+
+.section-sub {
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.65;
+  margin-top: 6px;
+  font-style: italic;
+  max-width: 760px;
+}
+.section-head.centered .section-sub { margin-left: auto; margin-right: auto; }
+
+/* ─── DIVIDER ──────────────────────────────────────────────────────── */
+.divider {
+  height: 2px;
+  width: 72%;
+  margin: 20px 0 38px 0;
+  background: linear-gradient(to right, rgba(0,112,185,0.9), rgba(0,112,185,0.08));
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0,112,185,0.14);
+}
+.divider.centered {
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, rgba(0,112,185,0.1), rgba(0,112,185,0.9), rgba(0,112,185,0.1));
+}
+
+.sub-heading {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 40px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.sub-heading::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue); opacity: 0.45; flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   INTRO BAND  (home-base copy + navigation)
+═══════════════════════════════════════════════════════════════════ */
+.intro-copy {
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 300;
+  color: #5a6472;
+  line-height: 1.7;
+  max-width: 660px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.intro-copy strong {
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.intro-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+.intro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--white);
+  border: 1.5px solid rgba(0,112,185,0.18);
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+  transition: all var(--transition);
+}
+.intro-chip:hover {
+  color: var(--white);
+  background: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,112,185,0.28);
+}
+.intro-chip svg { width: 13px; height: 13px; opacity: 0.75; }
+.intro-chip svg path, .intro-chip svg circle { stroke: currentColor; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   EVENTS & NEWS  (broadcast frame)
+═══════════════════════════════════════════════════════════════════ */
+.broadcast {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.18);
+  background: linear-gradient(180deg, #0b2740 0%, #06182b 100%);
+  box-shadow: 0 18px 50px rgba(0,42,74,0.22), 0 4px 14px rgba(0,112,185,0.10);
+}
+.broadcast-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px clamp(16px, 2vw, 26px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.broadcast-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.broadcast-live .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #ff5a5a;
+  box-shadow: 0 0 0 0 rgba(255,90,90,0.6);
+  animation: livePulse 1.8s infinite;
+}
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,90,90,0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(255,90,90,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,90,90,0); }
+}
+.broadcast-title {
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 500;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.04em;
+}
+.broadcast-dots { margin-left: auto; display: flex; gap: 6px; }
+.broadcast-dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.16);
+}
+.broadcast-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(120% 120% at 50% 0%, #123a5c 0%, #06182b 70%);
+}
+.broadcast-screen iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+  display: block;
+}
+/* Fallback shown behind the iframe (visible if the embed URL isn't set yet) */
+.broadcast-fallback {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px; text-align: center;
+  color: rgba(255,255,255,0.82);
+  padding: 24px;
+}
+.broadcast-fallback svg { width: 46px; height: 46px; opacity: 0.7; }
+.broadcast-fallback svg path, .broadcast-fallback svg rect, .broadcast-fallback svg circle { stroke: #cfe6f7; }
+.broadcast-fallback strong { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: #fff; }
+.broadcast-fallback span { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.6); max-width: 380px; line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CORE VALUES  (signature — interactive value orbs)
+═══════════════════════════════════════════════════════════════════ */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 2.4vw, 36px);
+}
+.value-orb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: transform var(--transition);
+}
+.value-orb:hover { transform: translateY(-6px); }
+
+.orb-face, .orb-back {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: clamp(16px, 2vw, 30px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.orb-face {
+  background: radial-gradient(circle at 32% 26%, #ffffff 0%, #f1f4f8 70%, #e8edf3 100%);
+  border: 1.5px solid rgba(0,112,185,0.16);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.55), 0 8px 22px rgba(0,42,74,0.07);
+  z-index: 2;
+}
+.orb-back {
+  background: radial-gradient(circle at 30% 24%, #1a92da 0%, #0070b9 52%, #004e82 100%);
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.9);
+  box-shadow: 0 20px 46px rgba(0,112,185,0.36);
+  z-index: 3;
+}
+/* decorative rotating ring */
+.orb-face::after {
+  content: '';
+  position: absolute; inset: 10px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(0,112,185,0.20);
+  transition: transform 0.9s ease, border-color var(--transition);
+}
+.value-orb:hover .orb-face::after { transform: rotate(28deg); border-color: rgba(0,112,185,0.34); }
+
+.orb-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--blue-dark);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.orb-icon {
+  width: clamp(80px, 3.4vw, 42px);
+  height: clamp(80px, 3.4vw, 42px);
+  margin-bottom: 10px;
+}
+.orb-icon path, .orb-icon circle, .orb-icon rect, .orb-icon line, .orb-icon polygon { stroke: var(--blue); }
+.orb-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(13px, 1.35vw, 17px);
+  font-weight: 600;
+  color: var(--blue-dark);
+  line-height: 1.2;
+}
+.orb-back-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight: 600;
+  line-height: 1.18;
+  margin-bottom: 9px;
+}
+.orb-back-rule {
+  width: 26px; height: 2px; border-radius: 2px;
+  background: rgba(255,255,255,0.6);
+  margin-bottom: 9px;
+}
+.orb-desc {
+  font-size: clamp(10px, 0.95vw, 12.5px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.94);
+}
+
+.value-orb:hover  .orb-face,
+.value-orb:focus-visible .orb-face,
+.value-orb.is-active .orb-face { opacity: 0; transform: scale(1.06); }
+.value-orb:hover  .orb-back,
+.value-orb:focus-visible .orb-back,
+.value-orb.is-active .orb-back { opacity: 1; transform: scale(1); }
+.value-orb:focus-visible { box-shadow: 0 0 0 3px rgba(0,112,185,0.35); border-radius: 50%; }
+
+.values-hint {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FEATURE CTA CARDS (Gazette / Gear)
+═══════════════════════════════════════════════════════════════════ */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 42px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: #f3f2f2;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height: 210px;
+}
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 100% at 100% 0%, rgba(0,112,185,0.12), transparent 55%);
+  opacity: 0; transition: opacity var(--transition);
+}
+.cta-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,112,185,0.34);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.cta-card:hover::before { opacity: 1; }
+.cta-icon {
+  position: relative;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  transition: background var(--transition);
+}
+.cta-card:hover .cta-icon { background: var(--blue); }
+.cta-icon svg { width: 50%; height: 50%; }
+.cta-icon svg path, .cta-icon svg rect, .cta-icon svg circle, .cta-icon svg line { stroke: var(--blue); }
+.cta-card:hover .cta-icon svg path,
+.cta-card:hover .cta-icon svg rect,
+.cta-card:hover .cta-icon svg circle,
+.cta-card:hover .cta-icon svg line { stroke: #fff; }
+.cta-kicker {
+  position: relative;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 6px;
+}
+.cta-title {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.15; margin-bottom: 8px;
+}
+.cta-desc {
+  position: relative;
+  font-size: clamp(11px, 1vw, 13.5px); font-weight: 300; color: var(--ink-light);
+  line-height: 1.6; max-width: 380px;
+}
+.cta-action {
+  position: relative;
+  margin-top: auto; padding-top: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.04em;
+  color: var(--blue);
+}
+.cta-action svg { width: 12px; height: 12px; transition: transform var(--transition); }
+.cta-card:hover .cta-action svg { transform: translateX(4px); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PURSUING EXCELLENCE TOGETHER  (affiliate logos)
+═══════════════════════════════════════════════════════════════════ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.logo-tile {
+  position: relative;       /* anchor for the hover image layer */
+  overflow: hidden;         /* clips the image to the rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  padding: clamp(16px, 2vw, 28px);
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,112,185,0.12);
+  background: var(--white);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+/* per-brand hover background image (set --hover-bg on each tile) */
+.logo-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--hover-bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 0;
+}
+.logo-tile:hover::before { opacity: 1; }
+.logo-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,112,185,0.30);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.09), 0 3px 12px rgba(0,112,185,0.12);
+}
+.logo-tile img {
+  position: relative;       /* keep logo above the hover image */
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.62;
+  transition: filter var(--transition), opacity var(--transition), transform 0.35s ease;
+}
+.logo-tile:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.04); }
+/* Text fallback shown when a logo image is missing */
+.logo-fallback {
+  position: relative;       /* keep fallback above the hover image */
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-weight: 600;
+  color: var(--blue-dark);
+  letter-spacing: 0.01em;
+  text-align: center;
+  opacity: 0.75;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   GARRETT FAMILY FOUNDATION
+═══════════════════════════════════════════════════════════════════ */
+.foundation {
+  display: flex;
+  flex-direction: row;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  box-shadow: 0 8px 30px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.08);
+}
+.foundation-visual {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(220px, 34vw, 440px);
+  overflow: hidden;
+  background: linear-gradient(160deg, #0b2740 0%, #0070b9 100%);
+}
+.foundation-visual img,
+.foundation-visual video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.foundation-controls {
+  position: absolute;
+  z-index: 3;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px;
+}
+.fv-btn {
+  width: 38px; height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.fv-btn:hover { background: #fff; transform: translateY(-2px); }
+.fv-btn svg { width: 18px; height: 18px; }
+.fv-btn svg path, .fv-btn svg rect, .fv-btn svg line, .fv-btn svg polygon { stroke: var(--blue);
+}
+.foundation-quote {
+  position: absolute; z-index: 2;
+  left: clamp(20px, 2.4vw, 34px); right: clamp(20px, 2.4vw, 34px); bottom: clamp(20px, 2.4vw, 30px);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(15px, 1.6vw, 22px);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.35;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+}
+.foundation-body {
+  flex: 1;
+  padding: clamp(24px, 3vw, 48px);
+  display: flex; flex-direction: column; justify-content: center;
+  background: #f7fafd;
+  min-width: 0;
+}
+.foundation-kicker {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px;
+}
+.foundation-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.12; margin-bottom: 14px;
+}
+.foundation-copy {
+  font-size: clamp(12px, 1.05vw, 14.5px); font-weight: 300; color: #5a6472;
+  line-height: 1.75; margin-bottom: 24px; max-width: 760px;
+}
+.foundation-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-solid, .btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.03em;
+  border-radius: 9px; text-decoration: none; cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-solid {
+  color: #fff; background: var(--blue); border: 1.5px solid var(--blue);
+  box-shadow: 0 6px 18px rgba(0,112,185,0.28);
+}
+.btn-solid:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,112,185,0.34); }
+.btn-ghost {
+  color: var(--blue); background: transparent; border: 1.5px solid rgba(0,112,185,0.35);
+}
+.btn-ghost:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); }
+.btn-solid svg, .btn-ghost svg { width: 12px; height: 12px; }
+.btn-solid svg path { stroke: #fff; }
+.btn-ghost svg path { stroke: var(--blue); }
+
+/* How to get involved — 2 steps */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+  margin-top: 22px;
+}
+.step-card {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,112,185,0.14);
+  background: #f3f2f2;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.step-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.25));
+  border-radius: 14px 0 0 14px;
+}
+.step-card:hover { transform: translateY(-4px); border-color: rgba(0,112,185,0.30); box-shadow: 0 14px 34px rgba(0,0,0,0.09), 0 4px 14px rgba(0,112,185,0.12); }
+.step-num {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--blue);
+  line-height: 1; padding-bottom: 3px;
+  transition: background var(--transition), color var(--transition);
+}
+.step-card:hover .step-num { background: var(--blue); color: #fff; }
+.step-title {
+  font-size: clamp(14px, 1.3vw, 16.5px); font-weight: 600; color: var(--blue-dark);
+  margin-bottom: 6px; line-height: 1.25;
+}
+.step-desc { font-size: clamp(11px, 1vw, 13px); font-weight: 300; color: var(--ink-light); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOLLOW ON SOCIAL  (sliding gallery)
+═══════════════════════════════════════════════════════════════════ */
+.social-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.social-icons { display: flex; gap: 10px; }
+.social-icons a {
+  width: 42px; height: 42px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--blue-soft);
+  transition: all var(--transition);
+}
+.social-icons a:hover { background: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,112,185,0.28); }
+.social-icons svg { width: 19px; height: 19px; }
+.social-icons svg path, .social-icons svg rect, .social-icons svg circle { stroke: var(--blue); }
+.social-icons a:hover svg path, .social-icons a:hover svg rect, .social-icons a:hover svg circle { stroke: #fff; }
+
+.gallery {
+  position: relative;
+  margin-top: 30px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.gallery-track {
+  display: flex;
+  gap: clamp(12px, 1.6vw, 20px);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.post-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: calc((100% - 3 * clamp(12px,1.6vw,20px)) / 4);
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.13);
+  background: linear-gradient(150deg, #dde8f4 0%, #c8dff2 100%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  text-decoration: none;
+  display: block;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.post-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.10); }
+.post-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.post-card:hover img { transform: scale(1.05); }
+.post-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,42,74,0) 45%, rgba(0,42,74,0.72) 100%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 16px;
+  opacity: 0; transition: opacity var(--transition);
+}
+.post-card:hover .post-overlay { opacity: 1; }
+.post-platform {
+  position: absolute; top: 12px; left: 12px;
+  width: 30px; height: 30px; border-radius: 9px;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.post-platform svg { width: 16px; height: 16px; }
+.post-platform svg path, .post-platform svg rect, .post-platform svg circle { stroke: var(--blue); }
+.post-caption { font-size: 12px; font-weight: 500; color: #fff; line-height: 1.4; }
+
+.gallery-nav {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-top: 22px;
+}
+.gallery-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid rgba(0,112,185,0.25);
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.gallery-btn:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,112,185,0.26); }
+.gallery-btn svg { width: 16px; height: 16px; }
+.gallery-btn svg path { stroke: var(--blue); }
+.gallery-btn:hover svg path { stroke: #fff; }
+.gallery-dots { display: flex; gap: 8px; }
+.gallery-dots button {
+  width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0;
+  background: rgba(0,112,185,0.25); cursor: pointer; transition: all var(--transition);
+}
+.gallery-dots button.active { background: var(--blue); width: 26px; border-radius: 999px; }
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .post-card { width: calc((100% - 2 * clamp(12px,1.6vw,20px)) / 3); }
+}
+@media (max-width: 900px) {
+  .values-grid   { grid-template-columns: repeat(2, 1fr); }
+  .cta-grid      { grid-template-columns: 1fr; }
+  .logo-grid     { grid-template-columns: repeat(3, 1fr); }
+  .foundation    { flex-direction: column; }
+  .foundation-visual { width: 100%; height: 240px; }
+  .steps-grid    { grid-template-columns: 1fr; }
+  .post-card     { width: calc((100% - clamp(12px,1.6vw,20px)) / 2); }
+}
+@media (max-width: 560px) {
+  .values-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .logo-grid     { grid-template-columns: repeat(2, 1fr); }
+  .post-card     { width: 100%; }
+}
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+.js-reveal .section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js-reveal .section.in-view { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .section { opacity: 1 !important; transform: none !important; }
+  .broadcast-live .dot { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════════════════════
+     INTRO BAND  (home-base copy + navigation)
+════════════════════════════════════════════════════ -->
+<div class="section" id="intro">
+  <p class="intro-copy">Your <strong>home base</strong> for who we are, what we stand for, and everything happening across the company. Start here.</p>
+  <nav class="intro-nav" aria-label="Jump to section">
+    <a class="intro-chip" href="#events"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke-width="1.4"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke-width="1.4" stroke-linecap="round"/></svg>Events &amp; News</a>
+    <a class="intro-chip" href="#values"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.3 4.3 13.3l.7-4.3-3.1-3 4.3-.6L8 1.5z" stroke-width="1.4" stroke-linejoin="round"/></svg>Core Values</a>
+    <a class="intro-chip" href="#excellence"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke-width="1.4"/><path d="M8 4v4l2.5 1.5" stroke-width="1.4" stroke-linecap="round"/></svg>Our Brands</a>
+    <a class="intro-chip" href="#foundation"><svg viewBox="0 0 16 16" fill="none"><path d="M8 14s5.5-3.2 5.5-7A3.2 3.2 0 0 0 8 4.5 3.2 3.2 0 0 0 2.5 7c0 3.8 5.5 7 5.5 7z" stroke-width="1.4" stroke-linejoin="round"/></svg>Garrett Family Foundation</a>
+    <a class="intro-chip" href="#social"><svg viewBox="0 0 16 16" fill="none"><circle cx="4" cy="8" r="2" stroke-width="1.4"/><circle cx="12" cy="4" r="2" stroke-width="1.4"/><circle cx="12" cy="12" r="2" stroke-width="1.4"/><path d="M5.8 7l4.4-2.2M5.8 9l4.4 2.2" stroke-width="1.4"/></svg>Follow Us</a>
+  </nav>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     EVENTS & NEWS
+════════════════════════════════════════════════════ -->
+<div class="section" id="events">
+  <div class="section-head">
+    <h2>
+      Events &amp; News
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.6"/><path d="M3 9h18M8 3v4M16 3v4" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">The same broadcast that rolls on the screens in our offices — company milestones, announcements, and what's coming up next.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="broadcast">
+    <div class="broadcast-bar">
+      <span class="broadcast-live"><span class="dot"></span> Now Playing</span>
+      <span class="broadcast-title">Garrett Office Broadcast &middot; Live Rotation</span>
+      <span class="broadcast-dots"><span></span><span></span><span></span></span>
+    </div>
+    <div class="broadcast-screen">
+      <!-- ▼▼▼ PASTE YOUR SCREENCLOUD SHARE / EMBED URL IN src BELOW ▼▼▼
+           In ScreenCloud: Player/Playlist → Share → copy the embed link.
+           Delete this comment once the real URL is in place. -->
+      <iframe
+        src="https://embed.screencloud.com/us/O0M3MhRSkFg6sOQLMGVz?type=channel&amp;autoplay=1"
+        title="Garrett Office Broadcast"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        loading="lazy"></iframe>
+      <!-- Fallback shows through until the src above is set -->
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CORE VALUES  (signature interactive orbs)
+════════════════════════════════════════════════════ -->
+<div class="section" id="values">
+  <div class="section-head centered">
+    <h2>
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20l1.1-6.5L2.6 8.8l6.5-.9L12 2z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      Our Core Values
+    </h2>
+    <p class="section-sub">Our mission is to build, grow and maintain a championship team that executes our vision by living our core values and delivering exceptional experiences to our teammates, partners, and residents. Below, please find the principles that guide every decision we make.</p>
+  </div>
+  <div class="divider centered"></div>
+
+  <div class="values-grid">
+
+    <!-- ▼ For each value, paste your icon URL into the src="" of its <img class="orb-icon"> ▼ -->
+
+    <!-- I -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Excellence">
+      <div class="orb-face">
+        <span class="orb-num">I</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_5d112a9d06cf43df991a1dd7478ef88d.svg" alt="Excellence icon">
+        <span class="orb-name">Excellence</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Excellence</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">We relentlessly pursue excellence in all we do, going beyond basic requirements and expectations.</p>
+      </div>
+    </div>
+
+    <!-- II -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Sense of Duty">
+      <div class="orb-face">
+        <span class="orb-num">II</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_9dab2f75056a4469b262d618f86e8ea6.svg" alt="Sense of Duty icon">
+        <span class="orb-name">Sense of Duty</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Sense of Duty</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">We prioritize the greater good of the team over individual self-interest, fulfilling our tasks with diligence.</p>
+      </div>
+    </div>
+
+    <!-- III -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Accountability">
+      <div class="orb-face">
+        <span class="orb-num">III</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_5aa6e5c6d35c49af977d865fffbd4319.svg" alt="Accountability icon">
+        <span class="orb-name">Accountability</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Accountability</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">We take full responsibility for our actions. When mistakes happen, we own them quickly and find solutions.</p>
+      </div>
+    </div>
+
+    <!-- IV -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Teamwork">
+      <div class="orb-face">
+        <span class="orb-num">IV</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_2b5ce80251d5464ebec516d5d7e645f2.svg" alt="Teamwork icon">
+        <span class="orb-name">Teamwork</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Teamwork</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">Teamwork is more than a buzzword; it's how we operate. We work as a unified team towards our shared goals.</p>
+      </div>
+    </div>
+
+    <!-- V -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Courage">
+      <div class="orb-face">
+        <span class="orb-num">V</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_36ca1e082aef44bc8227dca6b80e0cea.svg" alt="Courage icon">
+        <span class="orb-name">Courage</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Courage</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">We face challenges head-on, without hesitation. Whether big or small, we tackle issues with determination.</p>
+      </div>
+    </div>
+
+    <!-- VI -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="Honesty and Integrity">
+      <div class="orb-face">
+        <span class="orb-num">VI</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_bebb957403b94bc481de31fed5b1e650.svg" alt="Honesty & Integrity icon">
+        <span class="orb-name">Honesty &amp; Integrity</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">Honesty &amp; Integrity</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">Together, these values build trust and mutual respect essential for strong internal &amp; external relationships.</p>
+      </div>
+    </div>
+
+    <!-- VII -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="The Golden Rule">
+      <div class="orb-face">
+        <span class="orb-num">VII</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_eea89bbbee854083824ba5c54df5fa69.svg" alt="The Golden Rule icon">
+        <span class="orb-name">The Golden Rule</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">The Golden Rule</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">We live by the principle: "Do unto others as you would have them do to you." This value permeates all we do.</p>
+      </div>
+    </div>
+
+    <!-- VIII -->
+    <div class="value-orb" tabindex="0" role="button" aria-label="To Whom Much is Given, Much is Expected">
+      <div class="orb-face">
+        <span class="orb-num">VIII</span>
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_72cc92a1ab4d447e8b7d2290db1c884a.svg" alt="To Whom Much is Given, Much is Expected icon">
+        <span class="orb-name">Much is Expected</span>
+      </div>
+      <div class="orb-back">
+        <span class="orb-back-name">To Whom Much is Given, Much is Expected</span>
+        <span class="orb-back-rule"></span>
+        <p class="orb-desc">The spirit of care drives how we treat others in our community.</p>
+      </div>
+    </div>
+
+  </div>
+  <p class="values-hint"><br><br>Hover a value to reveal what it means — or tap on touch screens.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     GAZETTE + GEAR CTA
+════════════════════════════════════════════════════ -->
+<div class="section" id="highlights">
+  <div class="cta-grid">
+
+    <!-- GAZETTE -->
+    <a class="cta-card" href="https://thegarrettco2.sharepoint.com/:b:/s/SharepointResources/IQA0tr7uIfYZRoqnilS7KCPUAXGrrv6sxSD-k8r4X2YtQLc?e=9C46pN" target="_blank" rel="noopener">
+      <!-- ▼ Replace href="#" with the Garrett Gazette latest-issue link ▼ -->
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h13a1 1 0 0 1 1 1v14a1 1 0 0 0 1 1 1 1 0 0 0 1-1V8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4v15a1 1 0 0 0 1 1h14M7 8h7M7 11h7M7 14h4" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cta-kicker">Company Newsletter</div>
+      <div class="cta-title">Garrett Gazette</div>
+      <p class="cta-desc">Catch up on team highlights, project wins, new faces, and the stories shaping our company.</p>
+      <span class="cta-action">Read the Latest Issue
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- GEAR -->
+    <a class="cta-card" href="https://www.garrett-gear.com/Login?ReturnUrl=/Category" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cta-kicker">Branded Store</div>
+      <div class="cta-title">Garrett Gear</div>
+      <p class="cta-desc">Refresh your look with company apparel, swag, and office essentials — all in one place.</p>
+      <span class="cta-action">Shop the Store
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PURSUING EXCELLENCE TOGETHER  (affiliate brands)
+════════════════════════════════════════════════════ -->
+<div class="section" id="excellence">
+  <div class="section-head centered">
+    <h2>
+      Pursuing Excellence Together
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><path d="M8 12l2.5 2.5L16 9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">One family of brands, one standard. Meet the affiliated companies we're proud to build alongside.</p>
+  </div>
+  <div class="divider centered"></div>
+
+  <div class="logo-grid">
+    <!-- ▼ Swap each src for the real brand logo, set --hover-bg to that brand's background image, and set href to the brand's website. ▼ -->
+    <a class="logo-tile" href="https://www.apexlumbermaterials.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7a0a6ca29f414d0595c8f1ca1acccf2d~mv2.png');"><img src="https://static.wixstatic.com/shapes/4f7dd4_25911bd32dec49eda761837f144de79d.svg" alt="Apex Lumber & Materials" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand One</span></a>
+    <a class="logo-tile" href="https://www.bluehorseshoeframing.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_13f1222fc37a4a4fb5eb7657f325bb90~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_ff88bb9fd8104d44830c570ce4dfe3ff~mv2.png" alt="Blue Horseshoe Framing" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Two</span></a>
+    <a class="logo-tile" href="https://www.bluestarmep.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_75090715b04b436ab643c418a5097f36~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_0c45666d42364effbaad7c83dbe3d725~mv2.png" alt="Blue Star Mechanical" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Three</span></a>
+    <a class="logo-tile" href="https://www.edgedesigngrp.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_12b5eae6ec32471f97f8762d45f242e5~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f58ac51ae8df43aa8a1fbcbfd4b0c565~mv2.png" alt="EDGE Multifamily Design Group" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Four</span></a>
+    <a class="logo-tile" href="https://thegarrettco.com/garrett-construction/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7bb6f81f3673443fa22cd5ebf9d4545d~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_ae113aaa95714e6abfee338c6d1805a4~mv2.png" alt="Garrett Construction" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Five</span></a>
+    <a class="logo-tile" href="https://www.thegarrettfamilyfoundation.org/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_48ec5d5d8f734064a0c7e070a35325e7~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_48b50a78786e4ffb8c4c8795e31963aa~mv2.png" alt="Garrett Family Foundation" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Six</span></a>
+    <a class="logo-tile" href="https://thegarrettco.com/garrett-residential/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_75865a5b868c430e9a964dface7c6726~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_786578a670a34f348fc07b4c4f845a99~mv2.png" alt="Garrett Residential" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Seven</span></a>
+    <a class="logo-tile" href="https://www.legacydevpar.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_1f2bfe131fbe40478b03802d7736fac8~mv2.png');"><img src="https://static.wixstatic.com/shapes/4f7dd4_99f4aee881bf4c2d86a90e5a7018faa1.svg" alt="Legacy Development Partners" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Eight</span></a>
+    <a class="logo-tile" href="https://www.teldardrywall.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_441846aeec9b4e709b95932da1a013f0~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_d4b7bf54bfa14d13aace3e8237297c09~mv2.png" alt="Teldar" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Nine</span></a>
+    <a class="logo-tile" href="https://www.telisgrp.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_e76d1eb46c5e45a48983f3b5d1a0f537~mv2.png');"><img src="https://static.wixstatic.com/shapes/4f7dd4_4717121e28ed40aeab21e6ed9d651f0a.svg" alt="Telis" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Ten</span></a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     GARRETT FAMILY FOUNDATION
+════════════════════════════════════════════════════ -->
+<div class="section" id="foundation">
+  <div class="section-head">
+    <h2>
+      The Garrett Family Foundation
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.3-9.2-9C1.3 8.7 3.2 5 6.8 5c2 0 3.7 1.2 4.7 2.7C12.5 6.2 14.2 5 16.2 5c3.6 0 5.5 3.7 4 7-2.2 4.7-8.2 9-8.2 9z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">The Garrett Family Foundation is dedicated to relieving burdens of individuals and supporting organizations dedicated to the same cause. Our mission is to foster resilience, ignite hope, and carve pathways to success for those facing obstacles.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="foundation">
+    <div class="foundation-visual">
+      <!-- ▼ Set the mp4 in the video src below ▼ -->
+      <video id="foundationVideo" src="https://video.wixstatic.com/video/4f7dd4_6b3810f670494d26b2b2fba6a301907f/1080p/mp4/file.mp4" autoplay muted loop playsinline
+             onerror="this.style.display='none';"></video>
+      <div class="foundation-controls">
+        <button class="fv-btn" id="fvMute" type="button" aria-label="Unmute video" aria-pressed="false">
+          <svg class="fv-icon-muted" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke-width="1.6" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="fv-icon-sound" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="fv-btn" id="fvFull" type="button" aria-label="View video fullscreen">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="foundation-body">
+      <div class="foundation-kicker">Giving Back</div>
+      <h3 class="foundation-title">Investing in the communities we call home</h3>
+      <p class="foundation-copy">The Garrett Family Foundation channels our success into the people and places around us — supporting local causes, families in need, and organizations doing meaningful work. Every project we complete is a chance to strengthen a community, and the Foundation is how we make that commitment lasting. When you get involved, you're extending the Garrett mission beyond our walls.</p>
+      <div class="foundation-actions">
+        <a class="btn-solid" href="https://www.thegarrettfamilyfoundation.org/" target="_blank" rel="noopener">
+          Learn More
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn-ghost" href="https://www.thegarrettfamilyfoundation.org/areas-of-support" target="_blank" rel="noopener">
+          Areas of Support
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-heading">How to Get Involved</h3>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Employee Match</div>
+        <p class="step-desc">Every donation you make to the Garrett Family Foundation goes twice as far. All employee gifts are eligible for a dollar-for-dollar match, up to a specified amount per fiscal year, as outlined in our giving policy. It's a simple way to double your impact — your generosity, matched by the company, reaching even more people who need it.</p>
+        <a class="btn-solid" href="https://www.thegarrettfamilyfoundation.org/employee-match" target="_blank" rel="noopener" style="margin-top: 16px;">
+          View the Match Policy
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Community Rewards</div>
+        <p class="step-desc">You can support the Garrett Family Foundation every time you shop at Kroger, King Soopers, or City Market. Pair your account with GFF and help us help others while you grocery shop. This will cost you nothing and the foundation will earn a percentage of everything you spend! Here, every transaction makes a positive difference!</p>
+        <a class="btn-solid" href="https://www.thegarrettfamilyfoundation.org/community-rewards" target="_blank" rel="noopener" style="margin-top: 16px;">
+          Link Your Account
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOLLOW ON SOCIAL
+════════════════════════════════════════════════════ -->
+<div class="section" id="social">
+  <div class="section-head">
+    <div class="social-head-row">
+      <div>
+        <h2>
+          Follow Along
+          <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="12" r="2.6" stroke-width="1.6"/><circle cx="18" cy="6" r="2.6" stroke-width="1.6"/><circle cx="18" cy="18" r="2.6" stroke-width="1.6"/><path d="M8.4 10.8l7.2-3.6M8.4 13.2l7.2 3.6" stroke-width="1.6"/></svg>
+        </h2>
+        <p class="section-sub">See what we're up to across our channels — the latest projects, people, and moments.</p>
+      </div>
+      <div class="social-icons">
+        <!-- ▼ Point each href at your real profile ▼ -->
+        <a href="https://www.instagram.com/thegarrettco/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/company/3785173/admin/dashboard/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.6"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        <a href="https://www.facebook.com/thegarrettco" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 0 1 1-1z" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="gallery">
+    <div class="gallery-track" id="galleryTrack">
+      <!-- ▼ Each post: set <img src> to the post image and href to the post URL.
+           Add or remove .post-card blocks freely — the slider adapts. ▼ -->
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke-width="1.6"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.6"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke-width="1.6"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 0 1 1-1z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke-width="1.6"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+      <a class="post-card" href="#" target="_blank" rel="noopener">
+        <span class="post-platform"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.6"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <img src="" alt="Recent post" onerror="this.style.display='none';">
+        <div class="post-overlay"><span class="post-caption">Add a caption for this post</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="gallery-nav">
+    <button class="gallery-btn" id="galleryPrev" aria-label="Previous posts">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gallery-dots" id="galleryDots"></div>
+    <button class="gallery-btn" id="galleryNext" aria-label="Next posts">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+
+/* ─── SECTION + NAV REORDER ────────────────────────────────────────────
+   Puts the page in the desired order at load. Reorders blocks by their
+   section id and matches the nav chips to it. Changes order only —
+   never touches any section's content. */
+(function () {
+  function reorder() {
+    var wrap = document.querySelector('.page-wrap');
+    if (!wrap) return;
+
+    // Desired top-to-bottom order, by section id:
+    var sectionOrder = ['intro', 'excellence', 'highlights', 'values', 'foundation', 'events', 'social'];
+    sectionOrder.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.parentNode === wrap) wrap.appendChild(el); // moves it into place, in sequence
+    });
+
+    // Match the top navigation chips to the new order:
+    var nav = document.querySelector('.intro-nav');
+    if (nav) {
+      ['excellence', 'values', 'foundation', 'events', 'social'].forEach(function (id) {
+        var chip = nav.querySelector('a[href="#' + id + '"]');
+        if (chip) nav.appendChild(chip);
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', reorder);
+  } else {
+    reorder();
+  }
+})();
+
+/* ─── SMOOTH-SCROLL NAV ───────────────────────────────────────────── */
+(function() {
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.intro-chip[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+})();
+
+/* ─── VALUE ORBS: tap-to-toggle for touch devices ─────────────────── */
+document.querySelectorAll('.value-orb').forEach(function(orb) {
+  orb.addEventListener('click', function() {
+    var wasActive = orb.classList.contains('is-active');
+    document.querySelectorAll('.value-orb.is-active').forEach(function(o){ o.classList.remove('is-active'); });
+    if (!wasActive) orb.classList.add('is-active');
+  });
+  orb.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); orb.click(); }
+  });
+});
+
+/* ─── SOCIAL GALLERY SLIDER + INSTAGRAM FEED ──────────────────────── */
+(function() {
+  var track = document.getElementById('galleryTrack');
+  if (!track) return;
+  var prevBtn = document.getElementById('galleryPrev');
+  var nextBtn = document.getElementById('galleryNext');
+  var dotsWrap = document.getElementById('galleryDots');
+  var index = 0, autoTimer = null, cards = [];
+
+  var INSTAGRAM_FEED_URL = "https://feeds.behold.so/peBeuHFpww5yVunxstSd";
+  var MAX_POSTS = 12;
+  var DEBUG = true;   /* shows a status line under the gallery. Set to false once posts appear. */
+
+  function debug(msg) {
+    console.log('[IG feed] ' + msg);
+    if (!DEBUG) return;
+    var el = document.getElementById('igDebug');
+    if (!el) {
+      el = document.createElement('p');
+      el.id = 'igDebug';
+      el.style.cssText = 'margin-top:14px;font-size:12px;text-align:center;font-style:italic;color:#666;';
+      track.parentNode.insertAdjacentElement('afterend', el);
+    }
+    el.textContent = msg;
+  }
+
+  function refresh() { cards = Array.prototype.slice.call(track.children); }
+  function perView() {
+    var w = window.innerWidth;
+    if (w <= 560) return 1;
+    if (w <= 900) return 2;
+    if (w <= 1000) return 3;
+    return 4;
+  }
+  function maxIndex() { return Math.max(0, cards.length - perView()); }
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i < maxIndex() + 1; i++) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      (function(i){ b.addEventListener('click', function(){ index = i; update(); restart(); }); })(i);
+      dotsWrap.appendChild(b);
+    }
+  }
+  function update() {
+    if (index > maxIndex()) index = maxIndex();
+    if (index < 0) index = 0;
+    if (!cards.length) return;
+    var st = getComputedStyle(track);
+    var gap = parseFloat(st.columnGap || st.gap || 0) || 0;
+    var step = cards[0].getBoundingClientRect().width + gap;
+    track.style.transform = 'translateX(' + (-index * step) + 'px)';
+    Array.prototype.forEach.call(dotsWrap.children, function(d, i){ d.classList.toggle('active', i === index); });
+  }
+  function next() { index = (index >= maxIndex()) ? 0 : index + 1; update(); }
+  function prev() { index = (index <= 0) ? maxIndex() : index - 1; update(); }
+  function startAuto() { autoTimer = setInterval(next, 4000); }
+  function stopAuto() { if (autoTimer) clearInterval(autoTimer); }
+  function restart() { stopAuto(); startAuto(); }
+  function initSlider() { refresh(); index = 0; buildDots(); update(); restart(); }
+
+  nextBtn.addEventListener('click', function(){ next(); restart(); });
+  prevBtn.addEventListener('click', function(){ prev(); restart(); });
+  track.addEventListener('mouseenter', stopAuto);
+  track.addEventListener('mouseleave', startAuto);
+  var rt;
+  window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ buildDots(); update(); }, 150); });
+
+  var IG_BADGE = '<span class="post-platform"><svg viewBox="0 0 24 24" fill="none">' +
+    '<rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/>' +
+    '<circle cx="12" cy="12" r="4" stroke-width="1.6"/>' +
+    '<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>';
+
+  function pickImg(p) {
+    var s = p.sizes || {};
+    return (s.medium && s.medium.mediaUrl) || (s.small && s.small.mediaUrl) ||
+           (s.large && s.large.mediaUrl) || (s.full && s.full.mediaUrl) ||
+           p.thumbnailUrl || p.mediaUrl || '';
+  }
+  function cap(p) {
+    var c = p.prunedCaption || p.caption || '';
+    if (c.length > 90) c = c.slice(0, 88).trim() + '…';
+    return c.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function card(p) {
+    var a = document.createElement('a');
+    a.className = 'post-card';
+    a.href = p.permalink || '#';
+    a.target = '_blank'; a.rel = 'noopener';
+    var img = pickImg(p);
+    a.innerHTML = IG_BADGE +
+      (img ? '<img src="' + img + '" alt="Instagram post" loading="lazy" onerror="this.style.display=\'none\';">' : '') +
+      '<div class="post-overlay"><span class="post-caption">' + cap(p) + '</span></div>';
+    return a;
+  }
+
+  debug('Fetching feed…');
+  fetch(INSTAGRAM_FEED_URL, { mode: 'cors' })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(data){
+      var posts = (data && data.posts) ? data.posts : (Array.isArray(data) ? data : []);
+      if (!posts.length) { debug('Feed loaded, but it returned 0 posts (check the feed has posts / is published).'); initSlider(); return; }
+      track.innerHTML = '';
+      posts.slice(0, MAX_POSTS).forEach(function(p){ track.appendChild(card(p)); });
+      debug('Loaded ' + Math.min(posts.length, MAX_POSTS) + ' Instagram posts.');
+      initSlider();
+    })
+    .catch(function(err){
+      debug('Could not load feed (' + err.message + '). This is almost always the Behold domain whitelist or a SharePoint CSP block. Showing placeholders for now.');
+      initSlider();
+    });
+})();
+
+/* ─── FOUNDATION VIDEO CONTROLS ───────────────────────────────────── */
+(function() {
+  var video = document.getElementById('foundationVideo');
+  if (!video) return;
+  var muteBtn = document.getElementById('fvMute');
+  var fullBtn = document.getElementById('fvFull');
+  var mutedIcon = muteBtn.querySelector('.fv-icon-muted');
+  var soundIcon = muteBtn.querySelector('.fv-icon-sound');
+
+  muteBtn.addEventListener('click', function() {
+    video.muted = !video.muted;
+    var on = !video.muted;
+    mutedIcon.style.display = on ? 'none' : 'block';
+    soundIcon.style.display = on ? 'block' : 'none';
+    muteBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    muteBtn.setAttribute('aria-label', on ? 'Mute video' : 'Unmute video');
+  });
+
+  fullBtn.addEventListener('click', function() {
+    var req = video.requestFullscreen || video.webkitRequestFullscreen || video.webkitEnterFullscreen;
+    if (req) req.call(video);
+  });
+})();
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  document.body.classList.add('js-reveal');
+  var els = document.querySelectorAll('.section');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
