@@ -1243,7 +1243,7 @@ body {
     if (!wrap) return;
 
     // Desired top-to-bottom order, by section id:
-    var sectionOrder = ['intro', 'excellence', 'highlights', 'values', 'foundation', 'events', 'social'];
+    var sectionOrder = ['intro', 'highlights', 'events', 'values', 'excellence', 'foundation', 'social'];
     sectionOrder.forEach(function (id) {
       var el = document.getElementById(id);
       if (el && el.parentNode === wrap) wrap.appendChild(el); // moves it into place, in sequence
@@ -1252,7 +1252,7 @@ body {
     // Match the top navigation chips to the new order:
     var nav = document.querySelector('.intro-nav');
     if (nav) {
-      ['excellence', 'values', 'foundation', 'events', 'social'].forEach(function (id) {
+      ['highlights', 'values', 'excellence', 'foundation', 'social'].forEach(function (id) {
         var chip = nav.querySelector('a[href="#' + id + '"]');
         if (chip) nav.appendChild(chip);
       });
