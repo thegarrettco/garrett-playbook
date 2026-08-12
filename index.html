@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Garrett Playbook</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ─── RESET & BASE ─────────────────────────────────────────────────── */
@@ -27,10 +27,16 @@ html { scroll-behavior: smooth; }
   --white:       #ffffff;
   --radius:      10px;
   --transition:  0.22s ease;
+
+  /* ▼ ONE PLACE TO CHANGE ALL HEADING TYPE ▼
+     Every headline, card title, and section header pulls from this.
+     Swap in your corporate sans here and the whole page follows. */
+  --font-head:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
@@ -47,15 +53,15 @@ body {
 .section-head.centered { text-align: center; }
 
 .section-head h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.2vw, 40px);
+  font-family: var(--font-head);
+  font-size: clamp(25px, 3vw, 38px);
   font-weight: 700;
   color: var(--blue-dark);
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 .section-head.centered h2 { justify-content: center; }
 
@@ -98,6 +104,7 @@ body {
 }
 
 .sub-heading {
+  font-family: var(--font-head);
   font-size: clamp(15px, 1.5vw, 19px);
   font-weight: 600;
   color: var(--ink);
@@ -236,7 +243,7 @@ body {
 }
 .broadcast-fallback svg { width: 46px; height: 46px; opacity: 0.7; }
 .broadcast-fallback svg path, .broadcast-fallback svg rect, .broadcast-fallback svg circle { stroke: #cfe6f7; }
-.broadcast-fallback strong { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: #fff; }
+.broadcast-fallback strong { font-family: var(--font-head); font-size: 20px; font-weight: 600; letter-spacing: -0.01em; color: #fff; }
 .broadcast-fallback span { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.6); max-width: 380px; line-height: 1.6; }
 
 /* ── Events & News: balanced two-column broadcast ─────────────────── */
@@ -262,10 +269,10 @@ body {
   color: var(--blue); margin-bottom: 12px;
 }
 .broadcast-aside h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.2vw, 30px);
+  font-family: var(--font-head);
+  font-size: clamp(20px, 2.1vw, 29px);
   font-weight: 700; color: var(--blue-dark);
-  line-height: 1.15; margin-bottom: 14px;
+  line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
 }
 .broadcast-aside p {
   font-size: clamp(12px, 1.05vw, 14.5px); font-weight: 300; color: #5a6472;
@@ -336,33 +343,30 @@ body {
 }
 .value-orb:hover .orb-face::after { transform: rotate(28deg); border-color: rgba(0,112,185,0.34); }
 
-.orb-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--blue-dark);
-  opacity: 0.6;
-  margin-bottom: 8px;
-}
+/* Icon is now the hero of the front face (numerals removed) */
 .orb-icon {
-  width: clamp(80px, 3.4vw, 42px);
-  height: clamp(80px, 3.4vw, 42px);
-  margin-bottom: 10px;
+  width: clamp(78px, 8.4vw, 128px);
+  height: clamp(78px, 8.4vw, 128px);
+  max-width: 62%;
+  max-height: 62%;
+  object-fit: contain;
+  margin-bottom: 12px;
 }
 .orb-icon path, .orb-icon circle, .orb-icon rect, .orb-icon line, .orb-icon polygon { stroke: var(--blue); }
 .orb-name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(13px, 1.35vw, 17px);
+  font-family: var(--font-head);
+  font-size: clamp(13px, 1.4vw, 18px);
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--blue-dark);
-  line-height: 1.2;
+  line-height: 1.22;
 }
 .orb-back-name {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-head);
   font-size: clamp(13px, 1.3vw, 16px);
   font-weight: 600;
-  line-height: 1.18;
+  letter-spacing: -0.01em;
+  line-height: 1.22;
   margin-bottom: 9px;
 }
 .orb-back-rule {
@@ -458,9 +462,9 @@ body {
 }
 .cta-title {
   position: relative;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.2vw, 28px);
-  font-weight: 700; color: var(--blue-dark); line-height: 1.15; margin-bottom: 8px;
+  font-family: var(--font-head);
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 8px;
 }
 .cta-desc {
   position: relative;
@@ -532,11 +536,11 @@ body {
 .logo-fallback {
   position: relative;       /* keep fallback above the hover image */
   z-index: 1;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-head);
   font-size: clamp(14px, 1.5vw, 20px);
   font-weight: 600;
   color: var(--blue-dark);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   text-align: center;
   opacity: 0.75;
 }
@@ -590,12 +594,13 @@ body {
 .foundation-quote {
   position: absolute; z-index: 2;
   left: clamp(20px, 2.4vw, 34px); right: clamp(20px, 2.4vw, 34px); bottom: clamp(20px, 2.4vw, 30px);
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-head);
   font-style: italic;
   font-size: clamp(15px, 1.6vw, 22px);
   font-weight: 500;
   color: #fff;
-  line-height: 1.35;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   text-shadow: 0 2px 14px rgba(0,0,0,0.35);
 }
 .foundation-body {
@@ -605,24 +610,43 @@ body {
   background: #f7fafd;
   min-width: 0;
 }
+
 .foundation-kicker {
   font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--blue); margin-bottom: 12px;
 }
 .foundation-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 2.6vw, 34px);
-  font-weight: 700; color: var(--blue-dark); line-height: 1.12; margin-bottom: 14px;
+  font-family: var(--font-head);
+  font-size: clamp(21px, 2.5vw, 33px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 14px;
 }
 .foundation-copy {
   font-size: clamp(12px, 1.05vw, 14.5px); font-weight: 300; color: #5a6472;
   line-height: 1.75; margin-bottom: 24px; max-width: 760px;
 }
-.foundation-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Button row — logo now lives here as a third item, pushed to the right */
+.foundation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;      /* vertically centers the logo against the buttons */
+  gap: 12px;
+}
+
+/* ▼ Horizontal Foundation logo — sits right of the Areas of Support button ▼ */
+.foundation-logo {
+  height: clamp(34px, 3.6vw, 50px);   /* sized off height so it matches button height */
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: auto;                  /* pushes it to the far right of the row */
+}
+
 .btn-solid, .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 13px 24px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.03em;
   border-radius: 9px; text-decoration: none; cursor: pointer;
   transition: all var(--transition);
@@ -672,15 +696,16 @@ body {
   border-radius: 50%;
   background: var(--blue-soft);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 700; color: var(--blue);
-  line-height: 1; padding-bottom: 3px;
+  font-family: var(--font-head);
+  font-size: 21px; font-weight: 700; color: var(--blue);
+  line-height: 1;
   transition: background var(--transition), color var(--transition);
 }
 .step-card:hover .step-num { background: var(--blue); color: #fff; }
 .step-title {
+  font-family: var(--font-head);
   font-size: clamp(14px, 1.3vw, 16.5px); font-weight: 600; color: var(--blue-dark);
-  margin-bottom: 6px; line-height: 1.25;
+  margin-bottom: 6px; line-height: 1.3;
 }
 .step-desc { font-size: clamp(11px, 1vw, 13px); font-weight: 300; color: var(--ink-light); line-height: 1.6; }
 
@@ -789,11 +814,14 @@ body {
   .foundation-visual { width: 100%; height: 240px; }
   .steps-grid    { grid-template-columns: 1fr; }
   .post-card     { width: calc((100% - clamp(12px,1.6vw,20px)) / 2); }
+  /* let the logo sit left under the buttons instead of stranded far right */
+  .foundation-logo { margin-left: 0; }
 }
 @media (max-width: 560px) {
   .values-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
   .logo-grid     { grid-template-columns: repeat(2, 1fr); }
   .post-card     { width: 100%; }
+  .orb-icon      { margin-bottom: 8px; }
 }
 
 /* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
@@ -889,10 +917,9 @@ body {
 
     <!-- ▼ For each value, paste your icon URL into the src="" of its <img class="orb-icon"> ▼ -->
 
-    <!-- I -->
+    <!-- Excellence -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Excellence">
       <div class="orb-face">
-        <span class="orb-num">I</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_5d112a9d06cf43df991a1dd7478ef88d.svg" alt="Excellence icon">
         <span class="orb-name">Excellence</span>
       </div>
@@ -903,10 +930,9 @@ body {
       </div>
     </div>
 
-    <!-- II -->
+    <!-- Sense of Duty -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Sense of Duty">
       <div class="orb-face">
-        <span class="orb-num">II</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_9dab2f75056a4469b262d618f86e8ea6.svg" alt="Sense of Duty icon">
         <span class="orb-name">Sense of Duty</span>
       </div>
@@ -917,10 +943,9 @@ body {
       </div>
     </div>
 
-    <!-- III -->
+    <!-- Accountability -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Accountability">
       <div class="orb-face">
-        <span class="orb-num">III</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_5aa6e5c6d35c49af977d865fffbd4319.svg" alt="Accountability icon">
         <span class="orb-name">Accountability</span>
       </div>
@@ -931,10 +956,9 @@ body {
       </div>
     </div>
 
-    <!-- IV -->
+    <!-- Teamwork -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Teamwork">
       <div class="orb-face">
-        <span class="orb-num">IV</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_2b5ce80251d5464ebec516d5d7e645f2.svg" alt="Teamwork icon">
         <span class="orb-name">Teamwork</span>
       </div>
@@ -945,10 +969,9 @@ body {
       </div>
     </div>
 
-    <!-- V -->
+    <!-- Courage -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Courage">
       <div class="orb-face">
-        <span class="orb-num">V</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_36ca1e082aef44bc8227dca6b80e0cea.svg" alt="Courage icon">
         <span class="orb-name">Courage</span>
       </div>
@@ -959,11 +982,10 @@ body {
       </div>
     </div>
 
-    <!-- VI -->
+    <!-- Honesty & Integrity -->
     <div class="value-orb" tabindex="0" role="button" aria-label="Honesty and Integrity">
       <div class="orb-face">
-        <span class="orb-num">VI</span>
-        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_bebb957403b94bc481de31fed5b1e650.svg" alt="Honesty & Integrity icon">
+        <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_bebb957403b94bc481de31fed5b1e650.svg" alt="Honesty &amp; Integrity icon">
         <span class="orb-name">Honesty &amp; Integrity</span>
       </div>
       <div class="orb-back">
@@ -973,10 +995,9 @@ body {
       </div>
     </div>
 
-    <!-- VII -->
+    <!-- The Golden Rule -->
     <div class="value-orb" tabindex="0" role="button" aria-label="The Golden Rule">
       <div class="orb-face">
-        <span class="orb-num">VII</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_eea89bbbee854083824ba5c54df5fa69.svg" alt="The Golden Rule icon">
         <span class="orb-name">The Golden Rule</span>
       </div>
@@ -987,10 +1008,9 @@ body {
       </div>
     </div>
 
-    <!-- VIII -->
+    <!-- Much is Expected -->
     <div class="value-orb" tabindex="0" role="button" aria-label="To Whom Much is Given, Much is Expected">
       <div class="orb-face">
-        <span class="orb-num">VIII</span>
         <img class="orb-icon" src="https://static.wixstatic.com/shapes/4f7dd4_72cc92a1ab4d447e8b7d2290db1c884a.svg" alt="To Whom Much is Given, Much is Expected icon">
         <span class="orb-name">Much is Expected</span>
       </div>
@@ -1039,12 +1059,12 @@ body {
       </span>
     </a>
     
-    <!-- GEAR -->
+    <!-- WELLNESS -->
     <a class="cta-card" href="https://thegarrettco2.sharepoint.com/:b:/s/SharepointResources/IQBURxKM_PczR70dxE4VkZCoATlmKRjo9eg3iE0Koem4gsE?e=IxGwLO" target="_blank" rel="noopener">
       <div class="cta-icon">
         <svg viewBox="0 0 24 24" fill="none"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.4 13h6.1l.5-1 2 4.5 2-7 1.5 3.5h5.1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="cta-kicker">Health & Wellness</div>
+      <div class="cta-kicker">Health &amp; Wellness</div>
       <div class="cta-title">LiveWell at Garrett</div>
       <p class="cta-desc">Take charge of your health in a way that works for you. Connect with a dedicated health coach today!</p>
       <span class="cta-action">Get Started
@@ -1071,7 +1091,7 @@ body {
 
   <div class="logo-grid">
     <!-- ▼ Swap each src for the real brand logo, set --hover-bg to that brand's background image, and set href to the brand's website. ▼ -->
-    <a class="logo-tile" href="https://www.apexlumbermaterials.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7a0a6ca29f414d0595c8f1ca1acccf2d~mv2.png');"><img src="https://static.wixstatic.com/shapes/4f7dd4_25911bd32dec49eda761837f144de79d.svg" alt="Apex Lumber & Materials" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand One</span></a>
+    <a class="logo-tile" href="https://www.apexlumbermaterials.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7a0a6ca29f414d0595c8f1ca1acccf2d~mv2.png');"><img src="https://static.wixstatic.com/shapes/4f7dd4_25911bd32dec49eda761837f144de79d.svg" alt="Apex Lumber &amp; Materials" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand One</span></a>
     <a class="logo-tile" href="https://www.bluehorseshoeframing.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_13f1222fc37a4a4fb5eb7657f325bb90~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_ff88bb9fd8104d44830c570ce4dfe3ff~mv2.png" alt="Blue Horseshoe Framing" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Two</span></a>
     <a class="logo-tile" href="https://www.bluestarmep.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_75090715b04b436ab643c418a5097f36~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_0c45666d42364effbaad7c83dbe3d725~mv2.png" alt="Blue Star Mechanical" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Three</span></a>
     <a class="logo-tile" href="https://www.edgedesigngrp.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_12b5eae6ec32471f97f8762d45f242e5~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f58ac51ae8df43aa8a1fbcbfd4b0c565~mv2.png" alt="EDGE Multifamily Design Group" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="logo-fallback" style="display:none;">Brand Four</span></a>
@@ -1126,11 +1146,17 @@ body {
           Areas of Support
           <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+
+        <!-- ▼▼▼ HORIZONTAL FOUNDATION LOGO — swap the src for your horizontal lockup ▼▼▼ -->
+        <img class="foundation-logo"
+             src="https://static.wixstatic.com/shapes/4f7dd4_8e975d96212a425fa0b281d2d2e447bd.svg"
+             alt="The Garrett Family Foundation"
+             onerror="this.style.display='none';">
       </div>
     </div>
   </div>
 
-  <h3 class="sub-heading">How to Get Involved</h3>
+  <h3 class="sub-heading">How to Get Involved with Garrett Family Foundation</h3>
   <div class="steps-grid">
     <div class="step-card">
       <div class="step-num">1</div>
