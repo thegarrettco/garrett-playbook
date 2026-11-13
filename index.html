@@ -482,6 +482,122 @@ body {
 .cta-card:hover .cta-action svg { transform: translateX(4px); }
 
 /* ═══════════════════════════════════════════════════════════════════
+   2027 ANNUAL MEETING BANNER
+   — sits directly under the three CTA cards, inside the same section,
+     so it lands between the cards and Events & News without changing
+     the page's section order.
+═══════════════════════════════════════════════════════════════════ */
+/* Recreates the standard section break above the banner — the same
+   92px bottom spacing, 1.5px divider rule, and 20px top spacing every
+   .section gets — without adding a new section to the reorder script. */
+.am-section {
+  margin-top: 92px;
+  padding-top: 20px;
+  border-top: 1.5px solid var(--rule);
+}
+.am-banner {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 64px);
+  border-radius: 16px;
+  text-align: center;
+  background: #333e4e;
+  box-shadow: 0 14px 38px rgba(0,42,74,0.18);
+}
+/* ▼ BACKGROUND PHOTO — swap the URL here. Raise opacity for more
+     presence (e.g. 0.30), lower it for less (e.g. 0.14). ▼ */
+.am-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('https://static.wixstatic.com/media/4f7dd4_0e1be775f1e24424ade490c371c95757~mv2.jpg') center / cover no-repeat;
+  opacity: 0.22;
+  pointer-events: none;
+}
+.am-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.am-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6ebce9;
+  margin-bottom: 12px;
+}
+.am-title {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.am-copy {
+  font-size: clamp(12.5px, 1.1vw, 15px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.75;
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+.am-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.am-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+}
+.am-tag[hidden] { display: none; }
+.am-tag.is-countdown {
+  background: rgba(0,112,185,0.38);
+  border-color: rgba(110,188,233,0.45);
+}
+.am-tag svg { width: 14px; height: 14px; flex-shrink: 0; }
+.am-tag svg path, .am-tag svg rect, .am-tag svg circle { stroke: #6ebce9; }
+.am-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 26px;
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #06182b;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+  transition: background var(--transition), color var(--transition),
+              transform var(--transition), box-shadow var(--transition);
+}
+.am-btn:hover {
+  background: var(--blue);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,112,185,0.40);
+}
+.am-btn svg { width: 12px; height: 12px; transition: transform var(--transition); }
+.am-btn svg path { stroke: currentColor; }
+.am-btn:hover svg { transform: translateX(4px); }
+
+/* ═══════════════════════════════════════════════════════════════════
    PURSUING EXCELLENCE TOGETHER  (affiliate logos)
 ═══════════════════════════════════════════════════════════════════ */
 .logo-grid {
@@ -822,6 +938,7 @@ body {
   .logo-grid     { grid-template-columns: repeat(2, 1fr); }
   .post-card     { width: 100%; }
   .orb-icon      { margin-bottom: 8px; }
+  .am-btn        { width: 100%; justify-content: center; }
 }
 
 /* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
@@ -1072,6 +1189,43 @@ body {
       </span>
     </a>
 
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       2027 ANNUAL MEETING BANNER
+       ▼ Lives inside this CTA section, right under the cards,
+         so it always lands between the cards and Events & News.
+         Background photo + opacity are set in the CSS under
+         "2027 ANNUAL MEETING BANNER". ▼
+  ════════════════════════════════════════════════════ -->
+  <div class="am-section">
+  <div class="am-banner">
+    <div class="am-inner">
+      <div class="am-eyebrow">Built on Ownership</div>
+      <h2 class="am-title">2027 Annual Meeting</h2>
+      <p class="am-copy">This year, we come together in Denver to reflect on how we show up, how we contribute to our team's success, and how we help move The Garrett Co. forward.</p>
+
+      <div class="am-meta">
+        <span class="am-tag">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke-width="1.8" stroke-linecap="round"/></svg>
+          January 20–21, 2027
+        </span>
+        <span class="am-tag">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke-width="1.8"/></svg>
+          Denver, Colorado
+        </span>
+        <span class="am-tag is-countdown" id="amCountdown" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke-width="1.8"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="am-countdown-text"></span>
+        </span>
+      </div>
+
+      <a class="am-btn" href="https://thegarrettco2.sharepoint.com/:b:/s/SharepointResources/IQBpd1yCcSdwRITIQrqbAq5pARB8xZHkyKPbmZfwddOoSrI?e=ygCN3z" target="_blank" rel="noopener">
+        Explore Annual Meeting FAQs
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
   </div>
 </div>
 
@@ -1468,6 +1622,29 @@ document.querySelectorAll('.value-orb').forEach(function(orb) {
     });
   }, { threshold: 0.08 });
   els.forEach(function(s) { io.observe(s); });
+})();
+
+/* ─── ANNUAL MEETING COUNTDOWN ────────────────────────────────────────
+   Shows "X days away" before the meeting, "Tomorrow" the day before,
+   "Happening now" during it, and stays hidden once it's over.
+   Next year, just update the two dates below (month is 0-based: 0 = Jan). */
+(function () {
+  var chip = document.getElementById('amCountdown');
+  if (!chip) return;
+  var label = chip.querySelector('.am-countdown-text');
+  if (!label) return;
+
+  var MEETING_START = new Date(2027, 0, 20);   // January 20, 2027
+  var MEETING_END   = new Date(2027, 0, 21);   // January 21, 2027
+
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  if (today > MEETING_END) return;             // meeting is over — leave the chip hidden
+
+  var days = Math.round((MEETING_START - today) / 86400000);
+  if (days > 1)        label.textContent = days + ' days away';
+  else if (days === 1) label.textContent = 'Tomorrow';
+  else                 label.textContent = 'Happening now';
+  chip.hidden = false;
 })();
 </script>
 </body>
